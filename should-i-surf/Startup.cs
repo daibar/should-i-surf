@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using should_i_surf.Data;
 
 namespace should_i_surf
 {
@@ -26,6 +27,8 @@ namespace should_i_surf
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            services.AddScoped<IForecastRepo, MockSurfRepo>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

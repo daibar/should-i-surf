@@ -4,7 +4,7 @@ using should_i_surf.Models;
 
 namespace should_i_surf.Data
 {
-    public class MockSurfRepo : IForecast
+    public class MockSurfRepo : IForecastRepo
 
     {
         public IEnumerable<Forecast> GetSurfForecasts()
