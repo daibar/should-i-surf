@@ -6,11 +6,13 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using should_i_surf.Data;
+using should_i_surf.Models;
 
 namespace should_i_surf
 {
@@ -26,6 +28,9 @@ namespace should_i_surf
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<SurfContext>(opt => opt.UseNpgsql
+                (Configuration.GetConnectionString("SurfConnection")));
+            
             services.AddControllers();
 
             services.AddScoped<IForecastRepo, MockSurfRepo>();
