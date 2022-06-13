@@ -10,9 +10,9 @@ namespace should_i_surf.Controllers
     [ApiController]
     public class ForecastsController : ControllerBase
     {
-        private IForecastRepo _repository;
+        private ISurfRepo _repository;
 
-        public ForecastsController(IForecastRepo repository)
+        public ForecastsController(ISurfRepo repository)
         {
             _repository = repository;
         }

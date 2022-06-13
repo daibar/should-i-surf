@@ -33,7 +33,7 @@ namespace should_i_surf
             
             services.AddControllers();
 
-            services.AddScoped<IForecastRepo, MockSurfRepo>();
+            services.AddScoped<ISurfRepo, SqlSurfRepo>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
