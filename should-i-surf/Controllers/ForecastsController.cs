@@ -10,9 +10,15 @@ namespace should_i_surf.Controllers
     [ApiController]
     public class ForecastsController : ControllerBase
     {
-        private readonly MockSurfRepo _repository = new MockSurfRepo();
+        private ISurfRepo _repository;
 
-        //GET api/commands
+        public ForecastsController(ISurfRepo repository)
+        {
+            _repository = repository;
+        }
+        
+        //private readonly MockSurfRepo _repository = new MockSurfRepo();
+        //GET api/forcasts
         [HttpGet]
         public ActionResult<IEnumerable<Forecast>> GetAllForecasts()
         {
