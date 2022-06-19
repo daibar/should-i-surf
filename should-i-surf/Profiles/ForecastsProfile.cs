@@ -9,6 +9,7 @@ namespace should_i_surf.Profiles
         public ForecastsProfile()
         {
             CreateMap<Forecast, ForecastReadDto>();
+            CreateMap<ForecastCreateDto, Forecast>();
         }
         
     }
