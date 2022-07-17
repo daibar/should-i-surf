@@ -10,19 +10,18 @@ namespace should_i_surf.Controllers
     public class SurflineForecastsController : ControllerBase
     {
         private readonly ILogger<SurflineForecastsController> _logger;
+        private readonly ISurflineService _surflineService;
 
-        public SurflineForecastsController(ILogger<SurflineForecastsController> logger)
+        public SurflineForecastsController(ILogger<SurflineForecastsController> logger, ISurflineService surflineService)
         {
             _logger = logger;
+            _surflineService = surflineService;
         }
 
         [HttpGet]
         public async Task<string> Get(string cityName)
         {
-            var URL = $"http://api.weatherapi.com/v1/current.json?key=e15c553d3d3d4da19ff21448221707 &q={cityName}&aqi=no";
-            var httpClient = new HttpClient();
-            var response = await httpClient.GetAsync(URL);
-            return await response.Content.ReadAsStringAsync();
+            return await _surflineService.Get(cityName);
         }
 
     }

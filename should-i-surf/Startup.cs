@@ -38,7 +38,10 @@ namespace should_i_surf
 
             services.AddScoped<ISurfRepo, SqlSurfRepo>();
 
-            services.AddHttpClient();
+            services.AddHttpClient<ISurflineService, SurflineService>(c =>
+            {
+                c.BaseAddress = new Uri("http://api.weatherapi.com/v1/current.json");
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
